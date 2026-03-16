@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
       rel="stylesheet"
     />
     <style>
@@ -70,12 +70,12 @@
       }
 
       .container {
-        width: min(1160px, 92%);
+        width: min(1180px, 92%);
         margin: 0 auto;
       }
 
       .section {
-        padding: 88px 0;
+        padding: clamp(88px, 9vw, 124px) 0;
       }
 
       .reveal {
@@ -138,11 +138,12 @@
       }
 
       .btn {
-        border: 0;
-        border-radius: 12px;
+        border: 1px solid transparent;
+        border-radius: 16px;
         font-weight: 700;
-        font-size: 0.92rem;
-        padding: 12px 18px;
+        font-size: 0.94rem;
+        min-height: 52px;
+        padding: 14px 22px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -155,24 +156,23 @@
 
       .btn:hover {
         transform: translateY(-1px);
+        filter: brightness(1.03);
       }
 
-      .btn-green {
+      .btn-primary,
+      .btn-green,
+      .btn-blue {
         color: #042811;
         background: linear-gradient(135deg, #34d399, var(--green));
         box-shadow: 0 10px 24px rgba(34, 197, 94, 0.28);
       }
 
-      .btn-blue {
-        color: #f5f9ff;
-        background: linear-gradient(135deg, #2563eb, #3b82f6);
-        box-shadow: 0 10px 24px rgba(59, 130, 246, 0.28);
-      }
-
+      .btn-secondary,
       .btn-ghost {
         color: #e2ecfb;
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: none;
       }
 
       .badge {
@@ -296,6 +296,7 @@
 
       .section-heading {
         margin: 0;
+        max-width: 780px;
         font-size: clamp(1.45rem, 3vw, 2.4rem);
         line-height: 1.16;
       }
@@ -310,6 +311,7 @@
 
       .section-copy {
         margin: 14px 0 0;
+        max-width: 760px;
         color: var(--muted);
         line-height: 1.7;
       }
@@ -364,17 +366,17 @@
       }
 
       .problem-grid {
-        margin-top: 24px;
+        margin-top: 30px;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
+        gap: 16px;
       }
 
       .problem-card {
-        border-radius: var(--radius);
+        border-radius: 20px;
         border: 1px solid rgba(248, 113, 113, 0.3);
         background: linear-gradient(180deg, rgba(73, 20, 20, 0.3), rgba(21, 13, 13, 0.3));
-        padding: 18px;
+        padding: 22px;
       }
 
       .problem-card h3 {
@@ -389,11 +391,12 @@
       }
 
       .problem-lines {
-        margin-top: 18px;
+        max-width: 760px;
+        margin-top: 24px;
         border-left: 3px solid var(--orange);
-        padding-left: 14px;
+        padding-left: 18px;
         display: grid;
-        gap: 8px;
+        gap: 10px;
       }
 
       .problem-lines p {
@@ -406,10 +409,10 @@
       }
 
       .about-layout {
-        margin-top: 20px;
+        margin-top: 30px;
         display: grid;
         grid-template-columns: 1.2fr 0.8fr;
-        gap: 20px;
+        gap: 24px;
         align-items: start;
       }
 
@@ -512,47 +515,97 @@
       }
 
       .method-grid {
-        margin-top: 24px;
+        margin-top: 30px;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
+        gap: 18px;
+        align-items: stretch;
       }
 
       .step-card {
-        border-radius: var(--radius);
+        border-radius: 22px;
         border: 1px solid rgba(59, 130, 246, 0.28);
         background: linear-gradient(180deg, rgba(28, 45, 74, 0.58), rgba(12, 21, 39, 0.7));
-        padding: 18px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-height: 100%;
       }
 
       .step-top {
         display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .step-meta {
+        width: 100%;
+        display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 8px;
+        gap: 12px;
+      }
+
+      .step-tag {
+        font-size: 0.78rem;
+        color: #9fc0ff;
+        letter-spacing: 0.18em;
+        font-weight: 800;
+        text-transform: uppercase;
       }
 
       .step-number {
-        font-size: 0.8rem;
-        color: #9fc0ff;
-        letter-spacing: 0.16em;
-        font-weight: 800;
+        font-size: 3rem;
+        line-height: 0.9;
+        letter-spacing: -0.05em;
+        font-weight: 900;
+        color: #eef5ff;
       }
 
       .step-icon {
-        font-size: 1.2rem;
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(96, 165, 250, 0.24), rgba(59, 130, 246, 0.12));
+        border: 1px solid rgba(96, 165, 250, 0.28);
+        display: grid;
+        place-items: center;
+        font-size: 1.3rem;
+      }
+
+      .step-progress {
+        width: 100%;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.16);
+        overflow: hidden;
+      }
+
+      .step-progress span {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #34d399, #60a5fa);
       }
 
       .step-card h3 {
-        margin: 0 0 6px;
-        font-size: 1.05rem;
+        margin: 0;
+        font-size: 1.1rem;
       }
 
       .step-lead {
-        margin: 0 0 8px;
+        margin: 0;
         color: var(--blue-2);
         font-size: 0.9rem;
         font-weight: 600;
+      }
+
+      .step-body {
+        display: grid;
+        gap: 10px;
+        flex: 1;
       }
 
       .step-card p {
@@ -572,15 +625,15 @@
       }
 
       .qual-grid {
-        margin-top: 20px;
+        margin-top: 28px;
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
+        grid-template-columns: 1fr;
+        gap: 18px;
       }
 
       .qual-card {
-        border-radius: var(--radius);
-        padding: 18px;
+        border-radius: 22px;
+        padding: 24px;
       }
 
       .qual-good {
@@ -594,30 +647,64 @@
       }
 
       .qual-card h3 {
-        margin: 0 0 12px;
+        margin: 0 0 16px;
+        font-size: 1.05rem;
       }
 
       .qual-list {
         margin: 0;
-        padding-left: 18px;
+        padding: 0;
+        list-style: none;
         display: grid;
-        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
       }
 
       .qual-list li {
+        position: relative;
+        min-height: 100%;
+        padding: 16px 16px 16px 46px;
+        border-radius: 18px;
+        background: rgba(226, 232, 240, 0.08);
+        border: 1px solid rgba(226, 232, 240, 0.1);
         color: #d9e6f8;
         line-height: 1.5;
       }
 
+      .qual-list li::before {
+        position: absolute;
+        left: 16px;
+        top: 16px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .qual-good .qual-list li::before {
+        content: "\2713";
+        color: #072414;
+        background: #86efac;
+      }
+
+      .qual-bad .qual-list li::before {
+        content: "\2715";
+        color: #2f0909;
+        background: #fca5a5;
+      }
+
       .testimonials-wrap {
-        margin-top: 22px;
+        margin-top: 28px;
       }
 
       .testimonials-head {
         display: flex;
         justify-content: flex-end;
         gap: 10px;
-        margin-bottom: 12px;
+        margin-bottom: 16px;
       }
 
       .slider-btn {
@@ -635,7 +722,9 @@
       }
 
       .testimonials-track {
-        display: flex;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: calc(50% - 8px);
         gap: 14px;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -653,31 +742,76 @@
       }
 
       .testimonial-card {
-        min-width: min(360px, 88vw);
+        min-width: 0;
         scroll-snap-align: start;
-        border-radius: var(--radius);
+        border-radius: 22px;
         border: 1px solid rgba(255, 255, 255, 0.13);
         background: linear-gradient(180deg, #13233d, #0e182b);
-        padding: 18px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
       }
 
-      .testimonial-card p {
+      .testimonial-quote {
         margin: 0;
         color: #cfdef4;
         line-height: 1.7;
       }
 
+      .testimonial-quote.is-clamped {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+      }
+
+      .testimonial-more {
+        display: none;
+        align-self: flex-start;
+        padding: 0;
+        border: 0;
+        background: none;
+        color: #c5d8f8;
+        font: inherit;
+        font-size: 0.85rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .testimonial-more.is-visible {
+        display: inline-flex;
+      }
+
       .t-author {
-        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .t-avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #2563eb, #60a5fa);
+        color: #eff6ff;
+        font-size: 0.95rem;
+        font-weight: 800;
+        flex: 0 0 auto;
+      }
+
+      .t-author-copy {
         display: grid;
         gap: 3px;
       }
 
-      .t-author strong {
+      .t-author-copy strong {
         font-size: 0.95rem;
       }
 
-      .t-author span {
+      .t-author-copy span {
         color: #aac0df;
         font-size: 0.86rem;
       }
@@ -784,7 +918,19 @@
         border-radius: var(--radius);
         border: 1px solid rgba(255, 255, 255, 0.15);
         background: linear-gradient(130deg, rgba(20, 34, 56, 0.9), rgba(10, 17, 30, 0.9));
-        padding: 22px;
+        padding: 28px;
+      }
+
+      .cta-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .cta-copy {
+        display: grid;
+        align-content: start;
       }
 
       .cta-actions {
@@ -798,17 +944,123 @@
         margin-top: 18px;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
+        gap: 12px;
       }
 
       .trust-item {
-        border-radius: 12px;
+        border-radius: 16px;
         border: 1px solid rgba(34, 197, 94, 0.32);
         background: rgba(10, 26, 18, 0.58);
-        padding: 12px;
+        padding: 12px 14px;
         color: #b6f5cf;
         font-weight: 600;
         font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .trust-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: rgba(134, 239, 172, 0.18);
+        border: 1px solid rgba(134, 239, 172, 0.24);
+        font-size: 0.88rem;
+        flex: 0 0 auto;
+      }
+
+      .lead-form {
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(8, 15, 29, 0.84);
+        padding: 22px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .lead-form-head {
+        display: grid;
+        gap: 6px;
+      }
+
+      .lead-form-head h3 {
+        margin: 0;
+        font-size: 1.05rem;
+      }
+
+      .lead-form-head p {
+        margin: 0;
+        color: #b4c6e4;
+        line-height: 1.6;
+        font-size: 0.9rem;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .form-field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .form-field.full {
+        grid-column: 1 / -1;
+      }
+
+      .form-field label {
+        color: #d5e3f7;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .form-field input,
+      .form-field select,
+      .form-field textarea {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        padding: 14px 15px;
+        font: inherit;
+      }
+
+      .form-field input::placeholder,
+      .form-field textarea::placeholder {
+        color: #91a7cb;
+      }
+
+      .form-field textarea {
+        min-height: 118px;
+        resize: vertical;
+      }
+
+      .form-field input:focus,
+      .form-field select:focus,
+      .form-field textarea:focus {
+        outline: 2px solid rgba(96, 165, 250, 0.45);
+        outline-offset: 1px;
+        border-color: rgba(96, 165, 250, 0.4);
+      }
+
+      .form-note {
+        margin: 0;
+        color: #9ab2d7;
+        font-size: 0.82rem;
+        line-height: 1.6;
+      }
+
+      .form-status {
+        min-height: 1.2em;
+        margin: 0;
+        color: #86efac;
+        font-size: 0.85rem;
       }
 
       .faq-list {
@@ -869,7 +1121,10 @@
 
       .footer-col h4 {
         margin: 0 0 10px;
-        font-size: 0.95rem;
+        font-size: 0.84rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #dce8fb;
       }
 
       .footer-col p,
@@ -889,10 +1144,14 @@
 
       @media (max-width: 1024px) {
         .section {
-          padding: 78px 0;
+          padding: 92px 0;
         }
 
         .about-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-layout {
           grid-template-columns: 1fr;
         }
 
@@ -909,10 +1168,18 @@
         .metric-grid,
         .problem-grid,
         .method-grid,
-        .qual-grid,
         .gmb-grid,
         .trust-grid {
           grid-template-columns: 1fr;
+        }
+
+        .qual-list,
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .testimonials-track {
+          grid-auto-columns: 100%;
         }
 
         .about-metrics {
@@ -920,14 +1187,16 @@
         }
 
         .section {
-          padding: 72px 0;
+          padding: 78px 0;
         }
 
         .hero {
           padding-top: 52px;
         }
 
-        .hero-cta .btn {
+        .hero-cta .btn,
+        .cta-actions .btn,
+        .lead-form .btn {
           width: 100%;
         }
       }
@@ -985,7 +1254,8 @@
         .testimonial-card,
         .location-card,
         .cta-box,
-        .map-card {
+        .map-card,
+        .lead-form {
           padding: 14px;
         }
 
@@ -1067,7 +1337,7 @@
           <a href="#faq">FAQ</a>
         </nav>
         <a
-          class="btn btn-green"
+          class="btn btn-primary"
           href="https://wa.me/5519999315179?text=Quero%20uma%20analise%20estrategica%20gratuita"
           target="_blank"
           rel="noreferrer"
@@ -1095,13 +1365,13 @@
           </p>
           <div class="hero-cta reveal" style="transition-delay: 0.18s">
             <a
-              class="btn btn-green"
+              class="btn btn-primary"
               href="https://wa.me/5519999315179?text=Quero%20uma%20analise%20estrategica%20gratuita"
               target="_blank"
               rel="noreferrer"
               >Quero uma analise estrategica gratuita</a
             >
-            <a class="btn btn-ghost" href="#cta-secundario">Ver potencial do meu negocio</a>
+            <a class="btn btn-secondary" href="#cta-secundario">Ver potencial do meu negocio</a>
           </div>
           <p class="hero-subnote reveal" style="transition-delay: 0.2s">
             Atendemos negocios de Hortolândia, Campinas e Sumare
@@ -1274,39 +1544,57 @@
           <div class="method-grid">
             <article class="step-card reveal" style="transition-delay: 0.15s">
               <div class="step-top">
-                <span class="step-number">01 - DIAGNOSTICO</span>
                 <span class="step-icon">🎯</span>
+                <div class="step-meta">
+                  <span class="step-tag">Diagnostico</span>
+                  <span class="step-number">01</span>
+                </div>
+                <div class="step-progress" aria-hidden="true"><span style="width: 34%"></span></div>
               </div>
-              <h3>Estrategia</h3>
-              <p class="step-lead">Clareza estrategica antes de investir pesado</p>
-              <p>
-                Analisamos seu negocio, concorrencia, mercado e metas. Entendemos exatamente onde voce esta e para
-                onde quer ir. Sem diagnostico, nao iniciamos campanhas.
-              </p>
+              <div class="step-body">
+                <h3>Estrategia</h3>
+                <p class="step-lead">Clareza estrategica antes de investir pesado</p>
+                <p>
+                  Analisamos seu negocio, concorrencia, mercado e metas. Entendemos exatamente onde voce esta e para
+                  onde quer ir. Sem diagnostico, nao iniciamos campanhas.
+                </p>
+              </div>
             </article>
             <article class="step-card reveal" style="transition-delay: 0.21s">
               <div class="step-top">
-                <span class="step-number">02 - EXECUCAO</span>
                 <span class="step-icon">🚀</span>
+                <div class="step-meta">
+                  <span class="step-tag">Execucao</span>
+                  <span class="step-number">02</span>
+                </div>
+                <div class="step-progress" aria-hidden="true"><span style="width: 68%"></span></div>
               </div>
-              <h3>Tracao</h3>
-              <p class="step-lead">Validacao do que funciona com controle de custo</p>
-              <p>
-                Testamos anuncios com dados reais, otimizamos constantemente e cada real investido e rastreado. Voce
-                sabe exatamente para onde vai sua verba.
-              </p>
+              <div class="step-body">
+                <h3>Tracao</h3>
+                <p class="step-lead">Validacao do que funciona com controle de custo</p>
+                <p>
+                  Testamos anuncios com dados reais, otimizamos constantemente e cada real investido e rastreado. Voce
+                  sabe exatamente para onde vai sua verba.
+                </p>
+              </div>
             </article>
             <article class="step-card reveal" style="transition-delay: 0.27s">
               <div class="step-top">
-                <span class="step-number">03 - ESCALA</span>
                 <span class="step-icon">📈</span>
+                <div class="step-meta">
+                  <span class="step-tag">Escala</span>
+                  <span class="step-number">03</span>
+                </div>
+                <div class="step-progress" aria-hidden="true"><span style="width: 100%"></span></div>
               </div>
-              <h3>Crescimento</h3>
-              <p class="step-lead">Crescimento sustentavel e previsivel</p>
-              <p>
-                Expansao estrategica, aumento de investimento mantendo a lucratividade. Escalamos de forma consciente,
-                resultado e consequencia.
-              </p>
+              <div class="step-body">
+                <h3>Crescimento</h3>
+                <p class="step-lead">Crescimento sustentavel e previsivel</p>
+                <p>
+                  Expansao estrategica, aumento de investimento mantendo a lucratividade. Escalamos de forma
+                  consciente, resultado e consequencia.
+                </p>
+              </div>
             </article>
           </div>
           <p class="method-note reveal" style="transition-delay: 0.32s">
@@ -1314,7 +1602,7 @@
           </p>
           <div class="method-cta reveal" style="transition-delay: 0.36s">
             <a
-              class="btn btn-green"
+              class="btn btn-primary"
               href="https://wa.me/5519999315179?text=Quero%20meu%20diagnostico%20gratuito"
               target="_blank"
               rel="noreferrer"
@@ -1367,80 +1655,108 @@
             </div>
             <div class="testimonials-track reveal" id="testimonialsTrack" style="transition-delay: 0.18s">
               <article class="testimonial-card">
-                <p>
+                <div class="t-author">
+                  <span class="t-avatar" aria-hidden="true">CF</span>
+                  <div class="t-author-copy">
+                    <strong>Carla Ferreira</strong>
+                    <span>Clinica Odontologica Sorriso</span>
+                  </div>
+                </div>
+                <p class="testimonial-quote is-clamped">
                   "Minha clinica estava com a agenda vazia. Com a estrategia da The Midia Marketing, lotamos os
                   horarios e hoje temos lista de espera. O atendimento deles e excepcional."
                 </p>
-                <div class="t-author">
-                  <strong>Carla Ferreira</strong>
-                  <span>Clinica Odontologica Sorriso</span>
-                </div>
+                <button class="testimonial-more" type="button" aria-expanded="false">Ver mais</button>
                 <span class="t-result">Agenda lotada + 150% de novos pacientes</span>
               </article>
               <article class="testimonial-card">
-                <p>
+                <div class="t-author">
+                  <span class="t-avatar" aria-hidden="true">RC</span>
+                  <div class="t-author-copy">
+                    <strong>Rafael Costa</strong>
+                    <span>Estetica Glow</span>
+                  </div>
+                </div>
+                <p class="testimonial-quote is-clamped">
                   "Nao sabia para onde ia meu dinheiro com o ultimo gestor. Com a The Midia temos dashboard claro,
                   metricas diarias e faturamento cresceu 60% em 4 meses."
                 </p>
-                <div class="t-author">
-                  <strong>Rafael Costa</strong>
-                  <span>Estetica Glow</span>
-                </div>
+                <button class="testimonial-more" type="button" aria-expanded="false">Ver mais</button>
                 <span class="t-result">+60% em faturamento em 4 meses</span>
               </article>
               <article class="testimonial-card">
-                <p>
+                <div class="t-author">
+                  <span class="t-avatar" aria-hidden="true">JS</span>
+                  <div class="t-author-copy">
+                    <strong>Joao Santos</strong>
+                    <span>Restaurante Sabor da Casa</span>
+                  </div>
+                </div>
+                <p class="testimonial-quote is-clamped">
                   "Comecamos com pequena verba de teste. Em 3 meses os pedidos de delivery triplicaram. A agencia
                   otimiza toda semana baseada em dados."
                 </p>
-                <div class="t-author">
-                  <strong>Joao Santos</strong>
-                  <span>Restaurante Sabor da Casa</span>
-                </div>
+                <button class="testimonial-more" type="button" aria-expanded="false">Ver mais</button>
                 <span class="t-result">+3x em pedidos mensais</span>
               </article>
               <article class="testimonial-card">
-                <p>
+                <div class="t-author">
+                  <span class="t-avatar" aria-hidden="true">BL</span>
+                  <div class="t-author-copy">
+                    <strong>Beatriz Lima</strong>
+                    <span>Academia FitLife</span>
+                  </div>
+                </div>
+                <p class="testimonial-quote is-clamped">
                   "Tentei fazer sozinha por 6 meses e nao deu certo. Com a The Midia deram sistema e em 30 dias
                   tinhamos mais inscricoes que em todo o periodo anterior."
                 </p>
-                <div class="t-author">
-                  <strong>Beatriz Lima</strong>
-                  <span>Academia FitLife</span>
-                </div>
+                <button class="testimonial-more" type="button" aria-expanded="false">Ver mais</button>
                 <span class="t-result">ROI positivo em 30 dias</span>
               </article>
               <article class="testimonial-card">
-                <p>
+                <div class="t-author">
+                  <span class="t-avatar" aria-hidden="true">MN</span>
+                  <div class="t-author-copy">
+                    <strong>Marcio Nunes</strong>
+                    <span>Clinica Integrale</span>
+                  </div>
+                </div>
+                <p class="testimonial-quote is-clamped">
                   "O diferencial foi o acompanhamento. Todo ajuste vinha com explicacao simples e plano da semana.
                   Finalmente tivemos previsibilidade de leads."
                 </p>
-                <div class="t-author">
-                  <strong>Marcio Nunes</strong>
-                  <span>Clinica Integrale</span>
-                </div>
+                <button class="testimonial-more" type="button" aria-expanded="false">Ver mais</button>
                 <span class="t-result">+42% em leads qualificados</span>
               </article>
               <article class="testimonial-card">
-                <p>
+                <div class="t-author">
+                  <span class="t-avatar" aria-hidden="true">PD</span>
+                  <div class="t-author-copy">
+                    <strong>Priscila Duarte</strong>
+                    <span>Loja Casa e Decor</span>
+                  </div>
+                </div>
+                <p class="testimonial-quote is-clamped">
                   "Saimos do achismo para um processo. As campanhas de Google Ads passaram a trazer contatos com muito
                   mais intencao de compra."
                 </p>
-                <div class="t-author">
-                  <strong>Priscila Duarte</strong>
-                  <span>Loja Casa e Decor</span>
-                </div>
+                <button class="testimonial-more" type="button" aria-expanded="false">Ver mais</button>
                 <span class="t-result">CPA 28% menor em 60 dias</span>
               </article>
               <article class="testimonial-card">
-                <p>
+                <div class="t-author">
+                  <span class="t-avatar" aria-hidden="true">HA</span>
+                  <div class="t-author-copy">
+                    <strong>Henrique Alves</strong>
+                    <span>Auto Center Prime</span>
+                  </div>
+                </div>
+                <p class="testimonial-quote is-clamped">
                   "A equipe entende negocio local de verdade. Nao e so apertar botao. Hoje temos previsao mensal de
                   oportunidades e isso mudou nossa operacao."
                 </p>
-                <div class="t-author">
-                  <strong>Henrique Alves</strong>
-                  <span>Auto Center Prime</span>
-                </div>
+                <button class="testimonial-more" type="button" aria-expanded="false">Ver mais</button>
                 <span class="t-result">Fluxo comercial mais estavel</span>
               </article>
             </div>
@@ -1475,30 +1791,85 @@
             Quer saber se seu negocio tem potencial para crescimento previsivel?
           </h2>
           <div class="cta-box reveal" style="transition-delay: 0.08s">
-            <p class="section-copy" style="margin-top: 0">
-              A primeira conversa e gratuita e estrategica. Avaliamos seu cenario, identificamos gargalos e mostramos
-              se a The Midia Marketing e o melhor fit para voce.
-            </p>
-            <div class="cta-actions">
-              <a
-                class="btn btn-blue"
-                href="https://wa.me/5519999315179?text=Quero%20agendar%20diagnostico%20gratuito"
-                target="_blank"
-                rel="noreferrer"
-                >Agendar diagnostico gratuito</a
-              >
-              <a
-                class="btn btn-ghost"
-                href="https://wa.me/5519999315179?text=Quero%20falar%20com%20especialista%20da%20The%20Midia"
-                target="_blank"
-                rel="noreferrer"
-                >Falar com especialista no WhatsApp</a
-              >
-            </div>
-            <div class="trust-grid">
-              <div class="trust-item">✓ Sem contrato de teste</div>
-              <div class="trust-item">✓ Sem promessas irreais</div>
-              <div class="trust-item">✓ Metodo validado em 40+ negocios</div>
+            <div class="cta-layout">
+              <div class="cta-copy">
+                <p class="section-copy" style="margin-top: 0">
+                  A primeira conversa e gratuita e estrategica. Avaliamos seu cenario, identificamos gargalos e
+                  mostramos se a The Midia Marketing e o melhor fit para voce.
+                </p>
+                <div class="cta-actions">
+                  <a
+                    class="btn btn-primary"
+                    href="https://wa.me/5519999315179?text=Quero%20agendar%20diagnostico%20gratuito"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Agendar diagnostico gratuito</a
+                  >
+                  <a
+                    class="btn btn-secondary"
+                    href="https://wa.me/5519999315179?text=Quero%20falar%20com%20especialista%20da%20The%20Midia"
+                    target="_blank"
+                    rel="noreferrer"
+                    >Falar com especialista no WhatsApp</a
+                  >
+                </div>
+                <div class="trust-grid">
+                  <div class="trust-item"><span class="trust-icon">✓</span><span>Sem contrato de teste</span></div>
+                  <div class="trust-item"><span class="trust-icon">✓</span><span>Sem promessas irreais</span></div>
+                  <div class="trust-item"><span class="trust-icon">✓</span><span>Metodo validado em 40+ negocios</span></div>
+                </div>
+              </div>
+              <form class="lead-form" id="leadForm">
+                <div class="lead-form-head">
+                  <h3>Preencha e receba uma analise inicial</h3>
+                  <p>Formulario rapido para organizar seu cenario antes da conversa no WhatsApp.</p>
+                </div>
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label for="lead-name">Seu nome</label>
+                    <input id="lead-name" name="name" type="text" placeholder="Ex.: Ana Souza" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="lead-phone">WhatsApp</label>
+                    <input id="lead-phone" name="phone" type="tel" placeholder="(19) 99999-9999" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="lead-business">Empresa</label>
+                    <input id="lead-business" name="business" type="text" placeholder="Nome do seu negocio" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="lead-city">Cidade</label>
+                    <input id="lead-city" name="city" type="text" placeholder="Hortolandia, Campinas..." />
+                  </div>
+                  <div class="form-field">
+                    <label for="lead-segment">Segmento</label>
+                    <select id="lead-segment" name="segment" required>
+                      <option value="">Selecione</option>
+                      <option>Clinica / Saude</option>
+                      <option>Estetica / Beleza</option>
+                      <option>Restaurante / Delivery</option>
+                      <option>Academia / Fitness</option>
+                      <option>Loja / Varejo</option>
+                      <option>Servicos</option>
+                      <option>Outro</option>
+                    </select>
+                  </div>
+                  <div class="form-field full">
+                    <label for="lead-goal">Principal objetivo</label>
+                    <textarea
+                      id="lead-goal"
+                      name="goal"
+                      placeholder="Ex.: gerar mais leads, aumentar agenda, melhorar previsibilidade de vendas..."
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Enviar e abrir WhatsApp</button>
+                <p class="form-note">
+                  Ao enviar, abrimos o WhatsApp com sua mensagem estruturada para acelerar o diagnostico.
+                </p>
+                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+              </form>
             </div>
           </div>
         </div>
@@ -1836,58 +2207,158 @@
       const track = document.getElementById("testimonialsTrack");
       const prev = document.getElementById("prevSlide");
       const next = document.getElementById("nextSlide");
+      const leadForm = document.getElementById("leadForm");
+      const formStatus = document.getElementById("formStatus");
       let autoSlide = null;
+      let testimonialResizeTimer = null;
 
-      function getSlideWidth() {
-        const card = track.querySelector(".testimonial-card");
-        return card ? card.getBoundingClientRect().width + 14 : 320;
-      }
+      if (track && prev && next) {
+        const testimonialCards = track.querySelectorAll(".testimonial-card");
 
-      function slideNext() {
-        const amount = getSlideWidth();
-        const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - amount * 0.6;
-        if (nearEnd) {
-          track.scrollTo({ left: 0, behavior: "smooth" });
-        } else {
-          track.scrollBy({ left: amount, behavior: "smooth" });
+        function syncTestimonialToggles() {
+          testimonialCards.forEach((card) => {
+            const quote = card.querySelector(".testimonial-quote");
+            const button = card.querySelector(".testimonial-more");
+            if (!quote || !button) return;
+
+            const isExpanded = quote.classList.contains("is-expanded");
+            if (isExpanded) {
+              quote.classList.remove("is-expanded");
+            }
+
+            quote.classList.add("is-clamped");
+            const overflowing = quote.scrollHeight > quote.clientHeight + 2;
+
+            if (isExpanded) {
+              quote.classList.remove("is-clamped");
+              quote.classList.add("is-expanded");
+              button.classList.add("is-visible");
+              button.textContent = "Ver menos";
+              button.setAttribute("aria-expanded", "true");
+            } else {
+              button.classList.toggle("is-visible", overflowing);
+              button.textContent = "Ver mais";
+              button.setAttribute("aria-expanded", "false");
+            }
+          });
         }
-      }
 
-      function slidePrev() {
-        const amount = getSlideWidth();
-        const nearStart = track.scrollLeft <= amount * 0.4;
-        if (nearStart) {
-          track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
-        } else {
-          track.scrollBy({ left: -amount, behavior: "smooth" });
+        testimonialCards.forEach((card) => {
+          const quote = card.querySelector(".testimonial-quote");
+          const button = card.querySelector(".testimonial-more");
+          if (!quote || !button) return;
+
+          button.addEventListener("click", () => {
+            const shouldExpand = !quote.classList.contains("is-expanded");
+            quote.classList.toggle("is-expanded", shouldExpand);
+            quote.classList.toggle("is-clamped", !shouldExpand);
+            button.textContent = shouldExpand ? "Ver menos" : "Ver mais";
+            button.setAttribute("aria-expanded", String(shouldExpand));
+
+            if (!shouldExpand) {
+              syncTestimonialToggles();
+            }
+          });
+        });
+
+        function getSlideWidth() {
+          const card = track.querySelector(".testimonial-card");
+          return card ? card.getBoundingClientRect().width + 14 : 320;
         }
-      }
 
-      function startAutoSlide() {
-        autoSlide = setInterval(slideNext, 5500);
-      }
+        function slideNext() {
+          const amount = getSlideWidth();
+          const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - amount * 0.6;
+          if (nearEnd) {
+            track.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            track.scrollBy({ left: amount, behavior: "smooth" });
+          }
+        }
 
-      function stopAutoSlide() {
-        clearInterval(autoSlide);
-      }
+        function slidePrev() {
+          const amount = getSlideWidth();
+          const nearStart = track.scrollLeft <= amount * 0.4;
+          if (nearStart) {
+            track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
+          } else {
+            track.scrollBy({ left: -amount, behavior: "smooth" });
+          }
+        }
 
-      next.addEventListener("click", () => {
-        slideNext();
-        stopAutoSlide();
+        function startAutoSlide() {
+          stopAutoSlide();
+          autoSlide = setInterval(slideNext, 5500);
+        }
+
+        function stopAutoSlide() {
+          clearInterval(autoSlide);
+          autoSlide = null;
+        }
+
+        next.addEventListener("click", () => {
+          slideNext();
+          startAutoSlide();
+        });
+
+        prev.addEventListener("click", () => {
+          slidePrev();
+          startAutoSlide();
+        });
+
+        track.addEventListener("mouseenter", stopAutoSlide);
+        track.addEventListener("mouseleave", startAutoSlide);
+        track.addEventListener("touchstart", stopAutoSlide, { passive: true });
+        track.addEventListener("touchend", startAutoSlide, { passive: true });
+
+        window.addEventListener("resize", () => {
+          clearTimeout(testimonialResizeTimer);
+          testimonialResizeTimer = window.setTimeout(syncTestimonialToggles, 120);
+        });
+
+        window.addEventListener("load", syncTestimonialToggles, { once: true });
+        syncTestimonialToggles();
         startAutoSlide();
-      });
+      }
 
-      prev.addEventListener("click", () => {
-        slidePrev();
-        stopAutoSlide();
-        startAutoSlide();
-      });
+      if (leadForm && formStatus) {
+        leadForm.addEventListener("submit", (event) => {
+          event.preventDefault();
 
-      track.addEventListener("mouseenter", stopAutoSlide);
-      track.addEventListener("mouseleave", startAutoSlide);
-      track.addEventListener("touchstart", stopAutoSlide, { passive: true });
-      track.addEventListener("touchend", startAutoSlide, { passive: true });
-      startAutoSlide();
+          const formData = new FormData(leadForm);
+          const payload = {
+            name: String(formData.get("name") || "").trim(),
+            phone: String(formData.get("phone") || "").trim(),
+            business: String(formData.get("business") || "").trim(),
+            city: String(formData.get("city") || "").trim(),
+            segment: String(formData.get("segment") || "").trim(),
+            goal: String(formData.get("goal") || "").trim(),
+          };
+
+          const messageLines = [
+            "Ola, quero solicitar um diagnostico estrategico.",
+            "",
+            `Nome: ${payload.name}`,
+            `WhatsApp: ${payload.phone}`,
+            `Empresa: ${payload.business}`,
+            payload.city ? `Cidade: ${payload.city}` : "",
+            `Segmento: ${payload.segment}`,
+            `Objetivo: ${payload.goal}`,
+          ].filter(Boolean);
+
+          const whatsappUrl = new URL("https://wa.me/5519999315179");
+          whatsappUrl.searchParams.set("text", messageLines.join("\n"));
+
+          formStatus.textContent = "Abrindo WhatsApp com suas informacoes...";
+          const openedWindow = window.open(whatsappUrl.toString(), "_blank", "noopener,noreferrer");
+
+          if (!openedWindow) {
+            window.location.href = whatsappUrl.toString();
+          }
+
+          leadForm.reset();
+        });
+      }
 
       const GOOGLE_REVIEWS_CONFIG = {
         // Preencha para ativar leitura automatica do Google Meu Negocio:
